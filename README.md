@@ -5,6 +5,6 @@ This creates a vwan with a securehub and a couple of spoke vnets with VM's and a
 The topology will look like this:
 ![wvanlabsecurehubwithspokefw](https://github.com/quiveringbacon/securehubwithnvabreakout/assets/128983862/4ff05cd2-4e31-4956-9de9-47b200baf5ad)
 
-You can run Terraform right from the Azure cloud shell by cloning this git repository with "git clone https://github.com/quiveringbacon/AzureVwanlabwithSpokeFW.git ./terraform".
+You can run Terraform right from the Azure cloud shell by cloning this git repository with "git clone https://github.com/quiveringbacon/securehubwithnvabreakout.git ./terraform".
 
 Then, "cd terraform" then, "terraform init" and finally "terraform apply -auto-approve" to deploy.
