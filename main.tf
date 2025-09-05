@@ -181,7 +181,9 @@ resource "azurerm_resource_group_template_deployment" "apiconnections" {
 }
 TEMPLATE
 }
-
+resource "random_pet" "name" {
+  length = 1
+}
 
 #vwan and hub
 resource "azurerm_virtual_wan" "vwan1" {
@@ -431,7 +433,7 @@ resource "azurerm_firewall" "NVA" {
 
 #log analytics workspace
 resource "azurerm_log_analytics_workspace" "LAW" {
-  name                = "LAW-01"
+  name                = "LAW-${random_pet.name.id}"
   location            = azurerm_resource_group.RG.location
   resource_group_name = azurerm_resource_group.RG.name
   
@@ -439,7 +441,7 @@ resource "azurerm_log_analytics_workspace" "LAW" {
 
 #firewall logging
 resource "azurerm_monitor_diagnostic_setting" "fwlogs"{
-  name = "fwlogs"
+  name = "fwlogs-${random_pet.name.id}"
   target_resource_id = azurerm_firewall.azfw.id
   log_analytics_workspace_id = azurerm_log_analytics_workspace.LAW.id
   log_analytics_destination_type = "Dedicated"
@@ -759,3 +761,4 @@ resource "azurerm_virtual_machine_extension" "killspoke2vmfirewall" {
   }
   
 }
+
